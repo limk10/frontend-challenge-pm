@@ -1,63 +1,48 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "buyer_document": "12345678912",
-      "credit_card_holder_name": "JOAO S SAURO",
-      "credit_card_number": "4111111111111111",
-      "credit_card_expiration_date": "0121",
-      "credit_card_cvv": "123",
-      "amount": 10000
+      "credit_card_holder_name": "aaaaaaaaaaaa",
+      "buyer_document": "05604441646",
+      "credit_card_number": "5165465165161565",
+      "credit_card_expiration_date": "6516",
+      "credit_card_cvv": "1616",
+      "amount": 2600,
+      "createdAt": "2020/11/10 00:44:12",
+      "status": "paid",
+      "id": 1
     },
     {
-      "buyer_document": "12345678912",
-      "credit_card_holder_name": "JOAO S SAURO",
-      "credit_card_number": "4111111111111111",
-      "credit_card_expiration_date": "0121",
-      "credit_card_cvv": "123",
-      "amount": 10000,
-      "status": "refused",
+      "credit_card_holder_name": "bbbbbbb",
+      "buyer_document": "56161616516",
+      "credit_card_number": "1565165165165165",
+      "credit_card_expiration_date": "6516",
+      "credit_card_cvv": "6516",
+      "amount": 1500,
+      "createdAt": "2020/11/10 00:44:33",
+      "status": "paid",
       "id": 2
     },
     {
-      "buyer_document": "12345678912",
-      "credit_card_holder_name": "JOAO S SAURO",
-      "credit_card_number": "4111111111111111",
-      "credit_card_expiration_date": "0121",
-      "credit_card_cvv": "123",
-      "amount": 10000,
-      "status": "refused",
+      "credit_card_holder_name": "Afonso Arruda Martinello",
+      "buyer_document": "05604241116",
+      "credit_card_number": "0151651651651616",
+      "credit_card_expiration_date": "6165",
+      "credit_card_cvv": "6165",
+      "amount": 264500,
+      "createdAt": "2020/11/10 01:15:37",
+      "status": "paid",
       "id": 3
     },
     {
-      "buyer_document": "12345678912",
-      "credit_card_holder_name": "JOAO S SAURO",
-      "credit_card_number": "4111111111111111",
-      "credit_card_expiration_date": "0121",
-      "credit_card_cvv": "123",
-      "amount": 10000,
+      "credit_card_holder_name": "Afonso Padilha",
+      "buyer_document": "05604241164",
+      "credit_card_number": "0115161616516516",
+      "credit_card_expiration_date": "6516",
+      "credit_card_cvv": "6516",
+      "amount": 1500,
+      "createdAt": "2020/11/10 01:30:19",
       "status": "paid",
       "id": 4
-    },
-    {
-      "buyer_document": "12345678912",
-      "credit_card_holder_name": "JOAO S SAURO",
-      "credit_card_number": "4111111111111111",
-      "credit_card_expiration_date": "0121",
-      "credit_card_cvv": "123",
-      "amount": 10000,
-      "status": "paid",
-      "id": 5
-    },
-    {
-      "buyer_document": "12345678912",
-      "credit_card_holder_name": "JOAO S SAURO",
-      "credit_card_number": "4111111111111111",
-      "credit_card_expiration_date": "0121",
-      "credit_card_cvv": "123",
-      "amount": 10000,
-      "status": "refused",
-      "id": 6
     }
   ]
 }
