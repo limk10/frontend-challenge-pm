@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import NumberFormat from "react-number-format";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import moment from "moment";
 
 import {
   Typography,
@@ -33,11 +34,16 @@ const Create = () => {
   const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
-  const disptach = useDispatch();
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({});
 
   const transactions = useSelector(
     state => state.reducerTransaction.addTransaction
+  );
+
+  const requestLoading = useSelector(
+    state => state.reducerLoading.requestLoading
   );
 
   const handleChange = (props, value) => {
@@ -47,6 +53,7 @@ const Create = () => {
 
   const submit = async e => {
     e.preventDefault();
+    dispatch(actionsLoading.requestLoading(true));
     const errors = await validate(transaction, form);
 
     if (!_.isEmpty(errors)) {
@@ -61,7 +68,7 @@ const Create = () => {
         pauseOnFocusLoss: false,
         allowHtml: true
       });
-      return;
+      return dispatch(actionsLoading.requestLoading(false));
     }
 
     const data = {
@@ -70,12 +77,41 @@ const Create = () => {
       credit_card_number: form?.cardNumber,
       credit_card_expiration_date: form?.expirationDate,
       credit_card_cvv: form?.cvv,
-      amount: parseInt(form?.amount)
+      amount: parseInt(form?.amount),
+      createdAt: moment(new Date()).format("YYYY/MM/DD HH:mm:ss")
     };
 
-    // console.log("data", data);
+    try {
+      const { data: collection } = await api.post("transactions", data);
 
-    // const { data: collection } = await api.post('transactions', data)
+      let newtransactions = transactions?.data || [];
+
+      newtransactions.push(collection);
+
+      dispatch(
+        actionsTransaction.addTransaction({
+          data: newtransactions,
+          success: true
+        })
+      );
+
+      toast.success(`Transação criada com sucesso!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        pauseOnFocusLoss: false,
+        allowHtml: true
+      });
+
+      history.push("/transaction");
+    } catch (error) {
+    } finally {
+      dispatch(actionsLoading.requestLoading(false));
+    }
   };
 
   return (
@@ -129,7 +165,7 @@ const Create = () => {
                 format="###.###.###-##"
                 value={form.document}
                 onValueChange={values => {
-                  handleChange("document", values.floatValue);
+                  handleChange("document", values.value);
                 }}
                 id="outlined-basic"
                 label="CPF"
@@ -143,7 +179,9 @@ const Create = () => {
                 customInput={TextField}
                 format="#### #### #### ####"
                 value={form.cardNumber}
-                onChange={e => handleChange("cardNumber", e.target.value)}
+                onValueChange={values => {
+                  handleChange("cardNumber", values.value);
+                }}
                 id="outlined-basic"
                 label="N° do cartão"
                 variant="outlined"
@@ -154,9 +192,11 @@ const Create = () => {
                 style={{ width: "95%" }}
                 autoComplete="off"
                 customInput={TextField}
-                format="##/####"
+                format="##/##"
                 value={form.expirationDate}
-                onChange={e => handleChange("expirationDate", e.target.value)}
+                onValueChange={values => {
+                  handleChange("expirationDate", values.value);
+                }}
                 id="outlined-basic"
                 label="Data de expiração"
                 variant="outlined"
@@ -198,6 +238,7 @@ const Create = () => {
         <div>
           <Container>
             <ActionButton
+              disabled={requestLoading}
               onClick={e => submit(e)}
               icon={
                 <AddCircleIcon

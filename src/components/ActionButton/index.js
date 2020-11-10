@@ -13,12 +13,14 @@ const ActionButton = params => {
     color = "primary",
     variant = "contained",
     icon = "",
-    onClick = () => {}
+    onClick = () => {},
+    disabled = false
   } = params;
 
   return (
     <Button
       type="submit"
+      disabled={disabled}
       classes={{ root: classes.button, label: classes.textButton }}
       variant={variant}
       color={color}
