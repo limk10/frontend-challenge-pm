@@ -1,5 +1,10 @@
 import React from "react";
-import { Grid, Container, CircularProgress } from "@material-ui/core";
+import {
+  Grid,
+  Container,
+  CircularProgress,
+  Typography
+} from "@material-ui/core";
 import { useSelector } from "react-redux";
 import moment from "moment";
 
@@ -27,6 +32,15 @@ const CardList = params => {
         >
           <CircularProgress size={30} />
         </Container>
+      )}
+      {!requestLoading && !transactions?.data?.length && (
+        <Typography
+          style={{ textAlign: "center" }}
+          variant="body1"
+          gutterBottom
+        >
+          Nenhuma transação encontrada!
+        </Typography>
       )}
       {!requestLoading &&
         transactions?.data?.map((transaction, index) => (

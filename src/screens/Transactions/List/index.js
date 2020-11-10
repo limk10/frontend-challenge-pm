@@ -10,8 +10,9 @@ import { useStyles } from "./styles";
 import CardList from "./components/CardList";
 
 import actionsTransaction from "~/actions/transaction";
-import actionsLoading from "~/actions/loading";
+import { formatBrazillianMoney } from "~/utils/money";
 import ActionButton from "~/components/ActionButton";
+import actionsLoading from "~/actions/loading";
 import Header from "~/components/Header";
 import api from "~/services/api";
 
@@ -45,6 +46,14 @@ const List = () => {
     } finally {
       dispatch(actionsLoading.requestLoading(false));
     }
+  };
+
+  const sumValues = () => {
+    var count = 0;
+    for (var i = transactions?.data?.length; i--; ) {
+      count += transactions?.data[i]?.amount;
+    }
+    return count;
   };
 
   return (
@@ -94,7 +103,7 @@ const List = () => {
                   size={18}
                 />
               )}
-              {!requestLoading && "R$ 24.339,46"}
+              {!requestLoading && formatBrazillianMoney(sumValues())}
             </Typography>
           </>
         }
