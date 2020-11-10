@@ -43,6 +43,17 @@
       "createdAt": "2020/11/10 01:30:19",
       "status": "paid",
       "id": 4
+    },
+    {
+      "credit_card_holder_name": "Jose Marcos",
+      "buyer_document": "05604241111",
+      "credit_card_number": "156156165165165",
+      "credit_card_expiration_date": "1561",
+      "credit_card_cvv": "5165",
+      "amount": 150000,
+      "createdAt": "2020/11/10 02:02:33",
+      "status": "refused",
+      "id": 5
     }
   ]
 }
