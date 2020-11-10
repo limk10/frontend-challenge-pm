@@ -42,25 +42,27 @@ const CardList = params => {
           Nenhuma transação encontrada!
         </Typography>
       )}
-      {!requestLoading &&
-        transactions?.data?.map((transaction, index) => (
-          <Container key={index} className={classes.containerCard}>
-            <Grid container>
-              <Grid className={classes.name} xs={6}>
-                {titleCase(transaction?.credit_card_holder_name) || "-"}
+      <div data-testid="card-list">
+        {!requestLoading &&
+          transactions?.data?.map((transaction, index) => (
+            <Container key={index} className={classes.containerCard}>
+              <Grid container>
+                <Grid className={classes.name} xs={6}>
+                  {titleCase(transaction?.credit_card_holder_name) || "-"}
+                </Grid>
+                <Grid className={classes.status} xs={6}>
+                  {transaction?.status || "-"}
+                </Grid>
+                <Grid className={classes.date} xs={6}>
+                  {moment(randomDateTime()).format("DD/MM/YYYY HH:mm") || "-"}
+                </Grid>
+                <Grid className={classes.amount} xs={6}>
+                  {formatBrazillianMoney(transaction?.amount) || "-"}
+                </Grid>
               </Grid>
-              <Grid className={classes.status} xs={6}>
-                {transaction?.status || "-"}
-              </Grid>
-              <Grid className={classes.date} xs={6}>
-                {moment(randomDateTime()).format("DD/MM/YYYY HH:mm") || "-"}
-              </Grid>
-              <Grid className={classes.amount} xs={6}>
-                {formatBrazillianMoney(transaction?.amount) || "-"}
-              </Grid>
-            </Grid>
-          </Container>
-        ))}
+            </Container>
+          ))}
+      </div>
     </>
   );
 };

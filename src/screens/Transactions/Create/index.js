@@ -119,7 +119,7 @@ const Create = () => {
       <Header
         render={
           <Grid container>
-            <Grid xs={1}>
+            <Grid item={true} xs={1}>
               <IconButton
                 onClick={() => history.push("/transaction")}
                 className={classes.iconButton}
@@ -130,7 +130,7 @@ const Create = () => {
                 <ArrowBackIcon />
               </IconButton>
             </Grid>
-            <Grid xs={10}>
+            <Grid item={true} xs={10}>
               <Typography
                 className={classes.header}
                 variant="body1"
@@ -139,31 +139,37 @@ const Create = () => {
                 Nova Transação
               </Typography>
             </Grid>
-            <Grid xs={1}></Grid>
+            <Grid item={true} xs={1}></Grid>
           </Grid>
         }
       />
       <form noValidate autoComplete="false">
         <Container className={classes.containerForm}>
           <Grid container>
-            <Grid className={classes.gridPadding} xs={12}>
+            <Grid item={true} className={classes.gridPadding} xs={12}>
               <TextField
+                inputProps={{
+                  "data-testid": "customerName"
+                }}
                 fullWidth
                 autoComplete="off"
-                value={form.customerName}
+                value={form?.customerName || ""}
                 onChange={e => handleChange("customerName", e.target.value)}
                 id="outlined-basic"
                 label="Nome da pessoa compradora"
                 variant="outlined"
               />
             </Grid>
-            <Grid className={classes.gridPadding} xs={12}>
+            <Grid item={true} className={classes.gridPadding} xs={12}>
               <NumberFormat
+                inputProps={{
+                  "data-testid": "document"
+                }}
                 fullWidth
                 autoComplete="off"
                 customInput={TextField}
                 format="###.###.###-##"
-                value={form.document}
+                value={form?.document || ""}
                 onValueChange={values => {
                   handleChange("document", values.value);
                 }}
@@ -172,13 +178,16 @@ const Create = () => {
                 variant="outlined"
               />
             </Grid>
-            <Grid className={classes.gridPadding} xs={12}>
+            <Grid item={true} className={classes.gridPadding} xs={12}>
               <NumberFormat
+                inputProps={{
+                  "data-testid": "cardNumber"
+                }}
                 fullWidth
                 autoComplete="off"
                 customInput={TextField}
                 format="#### #### #### ####"
-                value={form.cardNumber}
+                value={form?.cardNumber || ""}
                 onValueChange={values => {
                   handleChange("cardNumber", values.value);
                 }}
@@ -187,13 +196,16 @@ const Create = () => {
                 variant="outlined"
               />
             </Grid>
-            <Grid className={classes.gridPadding} xs={8}>
+            <Grid item={true} className={classes.gridPadding} xs={8}>
               <NumberFormat
+                inputProps={{
+                  "data-testid": "expirationDate"
+                }}
                 style={{ width: "95%" }}
                 autoComplete="off"
                 customInput={TextField}
                 format="##/##"
-                value={form.expirationDate}
+                value={form?.expirationDate || ""}
                 onValueChange={values => {
                   handleChange("expirationDate", values.value);
                 }}
@@ -202,12 +214,15 @@ const Create = () => {
                 variant="outlined"
               />
             </Grid>
-            <Grid className={classes.gridPadding} xs={4}>
+            <Grid item={true} className={classes.gridPadding} xs={4}>
               <NumberFormat
+                inputProps={{
+                  "data-testid": "cvv"
+                }}
                 fullWidth
                 autoComplete="off"
                 customInput={TextField}
-                value={form.cvv}
+                value={form?.cvv || ""}
                 format="####"
                 onChange={e => handleChange("cvv", e.target.value)}
                 id="outlined-basic"
@@ -215,12 +230,15 @@ const Create = () => {
                 variant="outlined"
               />
             </Grid>
-            <Grid className={classes.gridPadding} xs={12}>
+            <Grid item={true} className={classes.gridPadding} xs={12}>
               <NumberFormat
+                inputProps={{
+                  "data-testid": "amount"
+                }}
                 fullWidth
                 autoComplete="off"
                 customInput={TextField}
-                value={form.amount}
+                value={form?.amount || ""}
                 onValueChange={values => {
                   handleChange("amount", values.floatValue);
                 }}
@@ -238,6 +256,7 @@ const Create = () => {
         <div>
           <Container>
             <ActionButton
+              data-testid="submitTransactionButton"
               disabled={requestLoading}
               onClick={e => submit(e)}
               icon={
