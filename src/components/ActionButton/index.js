@@ -19,6 +19,7 @@ const ActionButton = params => {
 
   return (
     <Button
+      data-testid="submitTransactionButton"
       type="submit"
       disabled={disabled}
       classes={{ root: classes.button, label: classes.textButton }}
