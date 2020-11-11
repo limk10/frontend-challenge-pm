@@ -7,7 +7,10 @@ export const useStyles = makeStyles(theme => ({
     lineHeight: "24px",
     letterSpacing: "0em",
     textAlign: "left",
-    color: theme.palette.grey[500]
+    color: theme.palette.grey[500],
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    whiteSpace: "nowrap"
   },
   date: {
     fontSize: "16px",
