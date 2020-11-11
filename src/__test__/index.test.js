@@ -15,7 +15,14 @@ const renderWithRouter = (ui, { route = "/" } = {}) => {
 };
 
 test("full app rendering/navigating", () => {
-  const { getByText } = renderWithRouter(<App />);
+  const { getByText } = renderWithRouter(
+    <Provider store={store()}>
+      <App />
+    </Provider>,
+    { route: "/page-not-found" }
+  );
+
+  // console.log(getByText);
   expect(getByText(/Pagina não encontrada/i)).toBeInTheDocument();
 });
 
