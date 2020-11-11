@@ -256,7 +256,6 @@ const Create = () => {
         <div>
           <Container>
             <ActionButton
-              data-testid="submitTransactionButton"
               disabled={requestLoading}
               onClick={e => submit(e)}
               icon={
