@@ -9,7 +9,7 @@ const NotFound = () => {
     setTimeout(() => {
       history.push("/");
     }, 4000);
-  }, []);
+  }, [history]);
 
   return (
     <Container>
