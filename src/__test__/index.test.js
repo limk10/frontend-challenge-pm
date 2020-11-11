@@ -32,7 +32,7 @@ test("list of transactions", async () => {
 });
 
 test("create new transaction", async () => {
-  const { getByTestId } = renderWithRouter(
+  const { getByTestId, getByText } = renderWithRouter(
     <Provider store={store()}>
       <App />
     </Provider>,
@@ -45,7 +45,7 @@ test("create new transaction", async () => {
     cardNumber: "4111 1111 1111 1111",
     expirationDate: "01/29",
     cvv: "1423",
-    amount: "R$ 12.312.312"
+    amount: "R$ 500"
   };
 
   const fieldCustomerName = await waitFor(() => getByTestId("customerName"));
@@ -100,6 +100,9 @@ test("create new transaction", async () => {
   expect(fieldCVV.value).toBe(dataForm.cvv);
   expect(fieldAmount.value).toBe(dataForm.amount);
 
-  // const cardList = await waitFor(() => getByTestId("card-list"));
-  // expect(cardList).toBeDefined();
+  const btnSubmit = await waitFor(() => getByTestId("submitTransactionButton"));
+
+  fireEvent.click(btnSubmit);
+
+  await waitFor(() => getByText(dataForm.nameCustomer));
 });
