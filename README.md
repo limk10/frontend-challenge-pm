@@ -1,7 +1,7 @@
 
 <h3 align="center">
     <br><br>
-    <b>Transactions PM! Crud de usuários</b> 
+    <b>Transactions PM! Controle de Transações</b> 
 </h3>
 
 <p align="center">
@@ -72,7 +72,31 @@ Alguma das principais tecnologias ultilizadas
   $ yarn server
 ```
 
-<a id="como-usarr"></a>
+<a id="como-usar"></a>
+
+## :fire: Executando Testes
+
+- ### **Pré-requisitos**
+
+  - Necessário **necessário** possuir o **[Node.js](https://nodejs.org/en/)** e o  **[GIT](https://git-scm.com/)** instalado na máquina
+  - É **preciso** ter um gerenciador de pacotes seja o **[NPM](https://www.npmjs.com/)** ou **[Yarn](https://yarnpkg.com/)**.
+
+
+1. Executando os testes:
+
+```sh
+  # Entre na pasta raiz do projeto
+  $ cd my-transactions-pm
+    
+  # Instale as dependências
+  $ yarn
+
+  # Execute o teste
+  $ yarn test
+  
+```
+
+<a id="executando-test"></a>
 
 
 ## :memo: License
