@@ -21,6 +21,7 @@
 - [Documentação](#documentacao)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Como Usar](#como-usar)
+- [Executando Testes](#executando-testes)
 
 <a id="sobre"></a>
 
@@ -96,7 +97,7 @@ Alguma das principais tecnologias ultilizadas
   
 ```
 
-<a id="executando-test"></a>
+<a id="executando-testes"></a>
 
 
 ## :memo: License
