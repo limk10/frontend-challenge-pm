@@ -25,7 +25,8 @@ api.interceptors.response.use(
     const { data } = response;
 
     if (data) {
-      toast.warn(`Opss... ${data}`, {
+      const msg = data?.error || data;
+      toast.warn(`Opss... ${msg}`, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
