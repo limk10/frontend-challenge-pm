@@ -6,12 +6,10 @@ import {
   Typography
 } from "@material-ui/core";
 import { useSelector } from "react-redux";
-import moment from "moment";
 
 import { useStyles } from "./styles";
 
 import { titleCase } from "~/utils/text";
-import { randomDateTime } from "~/utils/date";
 import { formatBrazillianMoney } from "~/utils/money";
 
 const CardList = params => {
@@ -47,16 +45,16 @@ const CardList = params => {
           transactions?.data?.map((transaction, index) => (
             <Container key={index} className={classes.containerCard}>
               <Grid container>
-                <Grid className={classes.name} xs={6}>
+                <Grid item={true} className={classes.name} xs={6}>
                   {titleCase(transaction?.credit_card_holder_name) || "-"}
                 </Grid>
-                <Grid className={classes.status} xs={6}>
+                <Grid item={true} className={classes.status} xs={6}>
                   {transaction?.status || "-"}
                 </Grid>
-                <Grid className={classes.date} xs={6}>
-                  {moment(randomDateTime()).format("DD/MM/YYYY HH:mm") || "-"}
+                <Grid item={true} className={classes.date} xs={6}>
+                  {transaction?.createdAt || "-"}
                 </Grid>
-                <Grid className={classes.amount} xs={6}>
+                <Grid item={true} className={classes.amount} xs={6}>
                   {formatBrazillianMoney(transaction?.amount) || "-"}
                 </Grid>
               </Grid>
