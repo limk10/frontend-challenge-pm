@@ -33,7 +33,7 @@ const CardList = params => {
       )}
       {!requestLoading && !transactions?.data?.length && (
         <Typography
-          style={{ textAlign: "center" }}
+          style={{ textAlign: "center", marginTop: 15 }}
           variant="body1"
           gutterBottom
         >
